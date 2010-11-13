@@ -34,12 +34,8 @@ L<Catalyst::View::Xslate> descendants and '' for remainders.
 
 =cut
 
-has extension => (
-	is      => 'rw',
-	isa     => 'Str',
-	lazy    => 1,
-	builder => '_extension',
-);
+has extension => ( is => 'rw', isa => 'Str', lazy => 1,
+	builder => '_extension' );
 
 # builder for 'extension'.
 sub _extension {
@@ -99,12 +95,8 @@ with all '::' replaced with '/' and 'extension' appended.
 
 =cut
 
-has template => (
-	is      => 'rw',
-	isa     => 'Str | Undef',
-	lazy    => 1,
-	builder => '_template',
-);
+has template => ( is => 'rw', isa => 'Str | Undef', lazy => 1,
+	builder => '_template' );
 
 # builder for 'template'.
 sub _template {
@@ -123,11 +115,7 @@ Returns L<Catalyst::View> (name or instance) for widget rendering.
 
 =cut
 
-has view => (
-	is       => 'rw',
-	isa      => 'Catalyst::View | Str',
-	required => 1,
-);
+has view => ( is => 'rw', isa => 'Catalyst::View | Str', required => 1 );
 
 
 =head2 view_instance
@@ -136,13 +124,8 @@ Returns L<Catalyst::View> instance for widget rendering.
 
 =cut
 
-has view_instance => (
-	is       => 'rw',
-	isa      => 'Catalyst::View',
-	init_arg => undef,
-	lazy     => 1,
-	builder  => '_view_instance',
-);
+has view_instance => ( is => 'rw', isa => 'Catalyst::View', init_arg => undef,
+	lazy => 1, builder => '_view_instance' );
 
 # builder for 'view_instance'.
 sub _view_instance {

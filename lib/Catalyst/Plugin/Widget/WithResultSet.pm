@@ -39,11 +39,8 @@ subtype __PACKAGE__ . '::DBIx::Class::ResultSet'
 	=> where { $_->isa('DBIx::Class::ResultSet') }
 ;
 
-has rs => (
-	is       => 'rw',
-	isa      => __PACKAGE__ . '::DBIx::Class::ResultSet | Str',
-	required => 1,
-);
+has rs => ( is => 'rw', isa => __PACKAGE__ . '::DBIx::Class::ResultSet | Str',
+	required => 1 );
 
 
 =head2 order_by
@@ -52,10 +49,7 @@ Default ordering for 'resultset' (if any specified).
 
 =cut
 
-has order_by => (
-	is  => 'rw',
-	isa => 'Str | Undef',
-);
+has order_by => ( is => 'rw', isa => 'Str | Undef' );
 
 
 =head2 resultset
@@ -64,14 +58,8 @@ L<DBIx::Class::ResultSet> instance.
 
 =cut
 
-has resultset => (
-	is       => 'rw',
-	isa      => __PACKAGE__ . '::DBIx::Class::ResultSet',
-	init_arg => undef,
-	lazy     => 1,
-	builder  => '_resultset',
-	writer   => '_set_resultset',
-);
+has resultset => ( is => 'rw', isa => __PACKAGE__ . '::DBIx::Class::ResultSet',
+	init_arg => undef, lazy => 1, builder  => '_resultset' );
 
 # builder for 'resultset'.
 sub _resultset {

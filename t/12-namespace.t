@@ -9,6 +9,16 @@ use lib "$Bin/lib";
 use Catalyst::Test 'TestApp';
 use Test::More tests => 3;
 
+
+SKIP: {
+	eval { require Catalyst::View::TT };
+
+	skip 'Catalyst::View::TT not instaled', 1
+		if $@;
+
+	like( get( '/ns1' ), qr'ok' );
+}
+
 like( get( '/ns' .$_ ), qr'ok' )
-	for 1 .. 3;
+	for 2 .. 3;
 

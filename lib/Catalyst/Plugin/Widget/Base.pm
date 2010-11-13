@@ -40,11 +40,7 @@ Returns current Catalyst application context.
 
 =cut
 
-has context => (
-	is       => 'ro',
-	isa      => 'Catalyst',
-	required => 1,
-);
+has context => ( is => 'ro', isa => 'Catalyst', required => 1 );
 
 
 =head2 render

@@ -9,5 +9,6 @@ use lib "$Bin/lib";
 use Catalyst::Test 'TestApp';
 use Test::More tests => 1;
 
+
 like( get( '/plain' ), qr'^ok' );
 
