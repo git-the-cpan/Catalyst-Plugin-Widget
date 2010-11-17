@@ -7,7 +7,7 @@ use FindBin '$Bin';
 use lib "$Bin/lib";
 
 use Catalyst::Test 'TestApp';
-use Test::More tests => 3;
+use Test::More tests => 4;
 
 
 SKIP: {
@@ -20,5 +20,5 @@ SKIP: {
 }
 
 like( get( '/ns' .$_ ), qr'ok' )
-	for 2 .. 3;
+	for 2 .. 4;
 

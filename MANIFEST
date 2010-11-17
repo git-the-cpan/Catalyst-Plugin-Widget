@@ -15,6 +15,7 @@ t/04-pod.t
 t/10-plain.t
 t/11-button.t
 t/12-namespace.t
+t/lib/CatalystX/Widget/Another.pm
 t/lib/TestApp.pm
 t/lib/TestApp/Controller/Root.pm
 t/lib/TestApp/tt/widget/button.tt

@@ -1,5 +1,11 @@
 Revision history for Catalyst-Plugin-Widget
 
+0.03    2010-11-17
+        * Namespace changes and pod.
+
+0.02    2010-11-13
+        * Tests fixed.
+
 0.01    2010-11-10
         * First version, released on an unsuspecting world.
 

@@ -6,11 +6,11 @@ Catalyst::Plugin::Widget - Simple way to create reusable HTML fragments
 
 =head1 VERSION
 
-Version 0.01
+Version 0.03
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 use strict;
 use warnings qw(all);
@@ -50,7 +50,7 @@ I<Create widget instance in controller>:
 
   sub index :Path :Args(0) {
       my ( $self,$c ) = @_;
-      my $w = $c->widget('Greeting');
+      my $w = $c->widget('~Greeting');
       $c->stash( greet => $w );
   }
 
@@ -66,14 +66,38 @@ I<Place widget onto template>:
 =head2 widget
 
 Create instance of widget class.
+Class name is handled by the following rules:
+
+- starting with the '+': use the entire name (except '+' sign)
+
+- starting with the '~': use name (except '~' sign) prepended with
+application class name
+
+- other: use name prepended with application config parameter
+$config->{'widget'}{'default_namespace'} or string 'CatalystX::Widget::'
+
+Examples:
+
+  $c->widget('+Some::Class');  # Some::Class
+
+  $c->widget('~Class');        # App::Widget::Class
+
+  $c->widget('Class');         # CatalystX::Widget::Class
+
+  App->config{'widget'}{'default_namespace'} = 'Local';
+  $c->widget('Class');         # Local::Class
 
 =cut
 
 sub widget {
 	my ( $app,$class ) = splice @_,0,2;
 
-	$class = ( $app->config->{ widget }{ default_namespace } ||
-	   ref( $app ) . '::Widget::' ) . $class unless $class =~ s/^\+//;
+	unless ( $class =~ s/^\+// ) {
+		$class = ( $class =~ s/^~// ?
+			ref( $app ) . '::Widget::' :
+			$app->config->{ widget }{ default_namespace } ||
+			'CatalystX::Widget::' ) . $class;
+	}
 
 	eval 'use ' . $class unless $app->{ __widgets__ }{ $class };
 	return $app->error( "Can't create widget: " . $@ ) if $@;

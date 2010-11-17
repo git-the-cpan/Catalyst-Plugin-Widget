@@ -17,13 +17,13 @@ __PACKAGE__->config( namespace => '' );
 sub plain :Local :Args(0) {
     my ( $self, $c ) = @_;
 
-	$c->res->body( '' . $c->widget('Plain', value => 'ok') );
+	$c->res->body( '' . $c->widget('~Plain', value => 'ok') );
 }
 
 sub button :Local :Args(0) {
     my ( $self, $c ) = @_;
 
-	$c->res->body( '' . $c->widget('Button', $c->req->params ) );
+	$c->res->body( '' . $c->widget('~Button', $c->req->params ) );
 }
 
 sub ns1 :Local :Args(0) {
@@ -44,6 +44,13 @@ sub ns3 :Local :Args(0) {
 	$c->config->{ widget }{ default_namespace } = ref( $c ) . '::WidgetX::';
 
 	$c->res->body( '' . $c->widget('Submit', value => 'ok') );
+}
+
+sub ns4 :Local :Args(0) {
+    my ( $self, $c ) = @_;
+
+	undef $c->config->{ widget }{ default_namespace };
+	$c->res->body( '' . $c->widget('Another', value => 'ok') );
 }
 
 
