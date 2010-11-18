@@ -1,5 +1,9 @@
 Revision history for Catalyst-Plugin-Widget
 
+0.04    2010-11-18
+        * POD correction.
+        * Switched to Module::Install.
+
 0.03    2010-11-17
         * Namespace changes and pod.
 

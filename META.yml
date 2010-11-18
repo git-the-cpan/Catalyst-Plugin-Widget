@@ -1,23 +1,26 @@
---- #YAML:1.0
-name:               Catalyst-Plugin-Widget
-version:            0.03
-abstract:           Simple way to create reusable HTML fragments
+---
+abstract: 'Simple way to create reusable HTML fragments'
 author:
-    - Oleg A. Mamontov <oleg@mamontov.net>
-license:            perl
-distribution_type:  module
-configure_requires:
-    ExtUtils::MakeMaker:  0
+  - 'Oleg A. Mamontov, C<< <oleg at mamontov.net> >>'
 build_requires:
-    ExtUtils::MakeMaker:  0
-requires:
-    Catalyst::Runtime:  5.80029
-    Test::More:         0
-no_index:
-    directory:
-        - t
-        - inc
-generated_by:       ExtUtils::MakeMaker version 6.55_02
+  ExtUtils::MakeMaker: 6.42
+  Test::More: 0
+configure_requires:
+  ExtUtils::MakeMaker: 6.42
+distribution_type: module
+generated_by: 'Module::Install version 0.98'
+license: perl
 meta-spec:
-    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
-    version:  1.4
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Catalyst-Plugin-Widget
+no_index:
+  directory:
+    - inc
+    - t
+requires:
+  Catalyst::Runtime: 5.80029
+  Test::More: 0
+resources:
+  license: http://dev.perl.org/licenses/
+version: 0.04

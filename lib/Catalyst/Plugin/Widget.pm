@@ -6,11 +6,11 @@ Catalyst::Plugin::Widget - Simple way to create reusable HTML fragments
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =cut
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 use strict;
 use warnings qw(all);
@@ -18,18 +18,20 @@ use warnings qw(all);
 
 =head1 DESCRIPTION
 
-'Widget' means kind of object that knows about current L<Catalyst>
+Termin I<widget> means kind of object that knows about current L<Catalyst>
 context and can be easily stringified to text representation.
+
+A typical example of a widget - L<CatalystX::Widget::Paginator> module.
 
 
 =head1 SYNOPSIS
 
-I<Setup plugin>
+Setup plugin:
 
-  use Catalyst( qw/ Widget / );
+  use Catalyst( qw( Widget ) );
 
 
-I<Create custom widget class>:
+Create custom widget class:
 
   package MyApp::Widget::Greeting;
   use Moose;
@@ -46,7 +48,7 @@ I<Create custom widget class>:
   1;
 
 
-I<Create widget instance in controller>:
+Create widget instance in controller>:
 
   sub index :Path :Args(0) {
       my ( $self,$c ) = @_;
@@ -55,7 +57,7 @@ I<Create widget instance in controller>:
   }
 
 
-I<Place widget onto template>:
+Place widget onto template:
 
   From auth: [% greet %]
 
@@ -71,10 +73,10 @@ Class name is handled by the following rules:
 - starting with the '+': use the entire name (except '+' sign)
 
 - starting with the '~': use name (except '~' sign) prepended with
-application class name
+application class name and '::Widget::'.
 
 - other: use name prepended with application config parameter
-$config->{'widget'}{'default_namespace'} or string 'CatalystX::Widget::'
+$config->{ widget }{ default_namespace } or string 'CatalystX::Widget::'
 
 Examples:
 
@@ -84,7 +86,7 @@ Examples:
 
   $c->widget('Class');         # CatalystX::Widget::Class
 
-  App->config{'widget'}{'default_namespace'} = 'Local';
+  App->config{ widget }{ default_namespace } = 'Local';
   $c->widget('Class');         # Local::Class
 
 =cut

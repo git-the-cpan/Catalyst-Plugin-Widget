@@ -1,15 +1,9 @@
 Catalyst-Plugin-Widget
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
+Termin 'widget' means kind of object that knows about current Catalyst
+context and can be easily stringified to text representation.
 
-A README file is required for CPAN modules since CPAN extracts the README
-file from a module distribution so that people browsing the archive
-can use it to get an idea of the module's uses. It is usually a good idea
-to provide version information here so that people can decide whether
-fixes for the module are worth downloading.
+A typical example of a widget - CatalystX::Widget::Paginator module.
 
 
 INSTALLATION
